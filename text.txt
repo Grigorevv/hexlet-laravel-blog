@@ -1,0 +1,30 @@
+$params = ['email' => 'user1@email.com', 'first_name' => 'Kolya', 'last_name' => 'Alex', 'age' => '20'];
+$params = ['email' => 'user2@email.com', 'first_name' => 'Dima', 'last_name' => 'Al'];
+$params = ['email' => 'user50@email.com', 'first_name' => 'Pedro', 'last_name' => 'Alexandro'];
+
+
+
+$params = ['title' => 'World War', 'body' => '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'];
+$posts = new App\Models\Posts($params);
+$user = new App\Models\User($params);
+$user->save();
+print_r($user->first_name);
+
+use App\Models\User;
+foreach (User::all() as $user) {
+    print_r($user->toArray());
+
+}
+print_r($user->toArray());
+
+$user = App\Models\User::find(2);
+$user = App\Models\User::all();
+
+$user = App\Models\User::where('first_name','=', 'Pedro');
+$user = App\Models\User::where('first_name', 'Pedro')->first();
+
+
+$user = App\Models\User::find(2);
+$post = App\Models\Post::find(2);
+
+$art = DB::table('articles')->get();

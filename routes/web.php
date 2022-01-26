@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\PageController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +19,4 @@ Route::get('/', function () {
     return 'welcome to new life';
 });
 
-
-Route::get('about', function () {
-    return view('about');
-});
+Route::get('about', [PageController::class, 'about']);
