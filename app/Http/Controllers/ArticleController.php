@@ -7,10 +7,11 @@ use App\Models\Article;
 
 class ArticleController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
        // $articles = Article::paginate(2);
-       $articles = Article::all();
+       
+       $articles = Article::paginate(5);
         return view('article.index', compact('articles'));
     }
 
@@ -46,6 +47,7 @@ class ArticleController extends Controller
         $article->save();
 
         // Редирект на указанный маршрут
+        $request->session()->flash('message', 'Article add successful!');
         return redirect()
             ->route('articles.index');
     }
